@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>zonybir's query</title>
+</head>
+<body>
+<div class="m" style="width:400px;height:1500px;">
+		<div style="width:100%:height:500px;">
+			zDialog 
+		</div>
+		<p class="text1">text1</p>
+		<p class="text2">text2</p>
+		<p class="text3">text3</p>
+		<p class="text4">text4</p>
+		<p class="text5">text5</p>
+</div>
+<script type="text/javascript" src="./z.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+	var a=321;
+	$z.init({
+		boxStyle:{
+			backgroundColor:'red',
+			width:'100px'
+		},
+		coverStyle:{
+			fontSize:'18px'
+		}
+	}).start('.text1',{
+		type:1,
+		z:'人们说',
+		tText:'我们都有一个家。',
+		btnSureText:'同意',
+		zStyle:{
+			textAlign:'center',
+			color:'red'
+		},
+		sureFun:function(){
+			console.log('zonybir\'s love.');
+		},
+		t:true,
+		clickCoverHide:true
+	});
+	$z('.text2',{
+		type:2,
+		z:'我们都还在这里?',
+		tText:'提示2',
+		tStyle:{
+			textAlign:'center'
+		},
+		sureFun:function(){
+			console.log('你选择的是的，对不起，回答错误。');
+			a++;
+		},
+		cancelFun:function(){
+			console.log('你选择的不是，恭喜你答对了。');
+		},
+		btnSureText:'是的',
+		btnCancelText:'不是'
+	})
+	$z('.text3',{
+		//type:1,
+		tText:'警告!',
+		tStyle:{
+			color:'red',
+			textAlign:'right'
+		},
+		z:'你正在非法操作。请立即终止操作.',
+		sureFun:function(){
+			alert('你同意了')
+		},
+		btnSureText:'同意终止'
+	})
+	$z('.text4',{
+		type:2,
+		t:'false',
+		z:'没有标题,但又确定取消按钮的弹出框',
+		zStyle:{
+			color:'red',
+			backgroundColor:'#ccc',
+			textAlign:'center'
+		},
+		sureFun:function(){
+			alert('你点击了确定按钮执行的事件');
+		},
+		cancelFun:function(){
+			alert('你点击了默认值为取消的取消按钮执行的事件');
+		},
+		clickCoverHide:true//点击空白处移除弹出框属性 但type为2 此属性无效  只有type为 0  或者无type属性时才生效
+
+	});
+	$z('.text5',{
+		type:0,
+		t:false,
+		z:'没有标题且没有按钮的弹出框',
+		clickCoverHide:false//由于此时type为0  无取消确定按钮 所以 此属性强制为true值  无法改变 点击空白处都能移除弹出框
+	})
+	//$z('.text2',{z:'fefefefefwefwfwfewfwefwefwfe'});
+}
+</script>
+</body>
+</html>
